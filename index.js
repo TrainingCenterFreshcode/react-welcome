@@ -14,10 +14,14 @@ class Counter extends React.Component {
     }
 
     decrement() {
-        // todo: this.state.count--;
-        this.setState({
-            count: this.state.count - 1
-        });
+        if(this.state.count > 0) {
+            // todo: this.state.count--;
+            this.setState({
+                count: this.state.count - 1
+            });
+        } else if(this.state.count === 0) {
+            alert('Лічильник = 0. Декремент заборонено!');
+        }
     }
 
     render() {
@@ -39,7 +43,7 @@ ReactDOM.render(component, root);
 
 
 +1. Зробіть такий же counter, який крім інкременту буде вміти ще й декрементувати лічильник.
-1*. Лічильник не має опускатись нижче нуля.
++1*. Лічильник не має опускатись нижче нуля.
 
 2. Реалізувати крок лічильника
 
