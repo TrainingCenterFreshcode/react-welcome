@@ -2,22 +2,21 @@ class Counter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            count: 0
+            count: 0,
+            step: 1
         };
     }
 
     increment() {
-        // todo: this.state.count++;
         this.setState({
-            count: this.state.count + 1
+            count: this.state.count + this.state.step
         });
     }
 
     decrement() {
         if(this.state.count > 0) {
-            // todo: this.state.count--;
             this.setState({
-                count: this.state.count - 1
+                count: this.state.count - this.state.step
             });
         } else if(this.state.count === 0) {
             alert('Лічильник = 0. Декремент заборонено!');
@@ -25,10 +24,19 @@ class Counter extends React.Component {
     }
 
     render() {
-        const h2 = React.createElement('h2', {}, this.state.count);
+        const counter = React.createElement('h2', {}, `Значення лічильника: ${this.state.count}`);
+        const step = React.createElement('h2', {}, `Значення кроку: ${this.state.step}`);
+
         const buttonIncrement = React.createElement('button', {onClick: () => {this.increment()}}, '+');
         const buttonDecrement = React.createElement('button', {onClick: () => {this.decrement()}}, '-');
-        return React.createElement(React.Fragment, {}, h2, buttonIncrement, buttonDecrement);
+
+        const setStepButton = React.createElement('button', {onClick: () => {
+            this.setState({
+                step: Number(prompt('Введіть нове значення для кроку:'))
+            })
+        }}, 'Встановити нове значення для кроку');
+
+        return React.createElement(React.Fragment, {}, counter, buttonIncrement, buttonDecrement, step, setStepButton);
     }
 }
 
@@ -45,7 +53,7 @@ ReactDOM.render(component, root);
 +1. Зробіть такий же counter, який крім інкременту буде вміти ще й декрементувати лічильник.
 +1*. Лічильник не має опускатись нижче нуля.
 
-2. Реалізувати крок лічильника
++2. Реалізувати крок лічильника (need fix)
 
 */
 
