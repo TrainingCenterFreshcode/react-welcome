@@ -26,27 +26,21 @@ class Counter extends React.Component {
     }
 
     render() {
-        return (<>
+        return (
+        <>
             <h2>{this.state.count}</h2>
             <h2>{this.state.step}</h2>
 
             <button onClick={() => {this.increment()}}>+</button>
             <button onClick={() => {this.decrement()}}>-</button>
 
-            
-        </>);
-
-        /*
-
-            const setStepButton = React.createElement('button', {onClick: () => {
+            <button onClick={() => {
             this.setState({
                 step: Number(prompt('Введіть нове значення для кроку:'))
             })
-            }}, 'Встановити нове значення для кроку');
-
-        */
-
-        //return React.createElement(React.Fragment, {}, counter, buttonIncrement, buttonDecrement, step, setStepButton);
+            }}>Встановити нове значення для кроку</button>
+        </>
+        );
     }
 }
 
